@@ -4,7 +4,7 @@
 
 - Họ tên: Trần Thị Hồng Gấm
 - MSSV: 2A202603967
-- Email: chưa điền
+- Email: tranthihonggam290905@gmail.com
 - Vai trong nhóm: người viết code cho Checkpoint 1 và Checkpoint 2
 
 ## 2. Phần việc phụ trách
