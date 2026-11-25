@@ -32,4 +32,4 @@
 
 ## 6. Tự đánh giá
 
-Đã hoàn thiện phần tổng hợp CP5 và ghi rõ giới hạn của dữ liệu giả lập, không có đối chứng. Đã duyệt chéo nhóm JQKA: 25/30 (C6 10, C7 5, C8 10), quyết định Go có điều kiện; câu trả lời của nhóm chưa có trong hồ sơ trao đổi.
+Đã hoàn thiện phần tổng hợp CP5 và ghi rõ giới hạn của dữ liệu giả lập, không có đối chứng. Đã duyệt chéo nhóm JQKA: 30/30 (C6 10, C7 10, C8 10), quyết định Go có điều kiện; câu trả lời của nhóm chưa có trong hồ sơ trao đổi.
