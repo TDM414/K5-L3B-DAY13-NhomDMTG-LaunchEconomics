@@ -4,6 +4,8 @@ Không cần khoá API. Điền các chỗ ghi VIẾT Ở ĐÂY (đánh dấu TO
 Bản gốc chưa sửa nằm ở lab13_starter.py.
 """
 import math
+from statistics import NormalDist
+
 import pandas as pd
 
 # Bảng giá GIẢ ĐỊNH của lab (không phải giá thật của nhà cung cấp nào)
@@ -77,6 +79,62 @@ def mo_hinh(runs, reqs, gia_vao=26, gia_ra=130, gia_tool=15, luong_phut=2000,
     )
 
 
+# ---------- Nhiệm vụ D1 · Cỡ mẫu ----------
+def co_mau_hai_ti_le(p1, p2, alpha, power):
+    """Cỡ mẫu mỗi nhóm khi so hai tỉ lệ, kiểm định hai phía."""
+    z_alpha = NormalDist().inv_cdf(1 - alpha / 2)
+    z_power = NormalDist().inv_cdf(power)
+    p_trung_binh = (p1 + p2) / 2
+    do_lech_gop = math.sqrt(2 * p_trung_binh * (1 - p_trung_binh))
+    do_lech_rieng = math.sqrt(p1 * (1 - p1) + p2 * (1 - p2))
+    return math.ceil(((z_alpha * do_lech_gop + z_power * do_lech_rieng) / (p2 - p1)) ** 2)
+
+
+def in_ke_hoach_pilot(reqs):
+    from statsmodels.stats.power import NormalIndPower
+    from statsmodels.stats.proportion import proportion_effectsize
+
+    baseline, alpha, power, icc = 0.70, 0.05, 0.80, 0.02
+    nhan_vien_moi_nhom, depot_moi_nhom = 20, 6
+    yeu_cau_moi_nguoi = 75
+
+    n_5_diem = co_mau_hai_ti_le(baseline, 0.75, alpha, power)
+    de_75 = 1 + (yeu_cau_moi_nguoi - 1) * icc
+    n_theo_nhan_vien = math.ceil(n_5_diem * de_75)
+    so_nhan_vien_can = math.ceil(n_theo_nhan_vien / yeu_cau_moi_nguoi)
+    tran_nhan_vien = nhan_vien_moi_nhom / icc
+    tran_depot = depot_moi_nhom / icc
+
+    n_6_diem = co_mau_hai_ti_le(baseline, 0.76, alpha, power)
+    # Giải c*m / (1 + (m - 1)*ICC) >= n hiệu dụng để tìm m tối thiểu.
+    m_toi_thieu = math.ceil(n_6_diem * (1 - icc) / (nhan_vien_moi_nhom - n_6_diem * icc))
+    de_pilot = 1 + (m_toi_thieu - 1) * icc
+    n_thuc_pilot = nhan_vien_moi_nhom * m_toi_thieu
+    n_hieu_dung = n_thuc_pilot / de_pilot
+    power_5_diem = NormalIndPower().power(
+        abs(proportion_effectsize(baseline, 0.75)), nobs1=n_6_diem, alpha=alpha,
+    )
+
+    print('\nD1 cỡ mẫu mỗi nhóm')
+    print(f'a) Theo yêu cầu, +5 điểm phần trăm: {n_5_diem:,} yêu cầu')
+    print(f'b) Theo nhân viên, m={yeu_cau_moi_nguoi}: DE={de_75:.2f}, {n_theo_nhan_vien:,} yêu cầu, '
+          f'{so_nhan_vien_can} người, tổng {2 * so_nhan_vien_can} người')
+    print(f'c) {nhan_vien_moi_nhom} nhân viên: n hiệu dụng < {tran_nhan_vien:,.0f}')
+    print(f'd) {depot_moi_nhom} depot: n hiệu dụng < {tran_depot:,.0f}')
+    print(f'e) +6 điểm phần trăm: cần {n_6_diem} yêu cầu hiệu dụng, m tối thiểu={m_toi_thieu}, '
+          f'DE={de_pilot:.2f}, {n_thuc_pilot:,} yêu cầu thực, n hiệu dụng={n_hieu_dung:.2f}')
+    print(f'   Với tác động thật +5 điểm phần trăm, power xấp xỉ {power_5_diem:.1%}')
+
+    print('\nD3 đối chiếu dữ liệu chạy thử')
+    reqs_pilot = reqs[reqs['loai'].isin(['noi_dia', 'hang_nang'])]
+    for pham_vi, mau in [('toàn bộ', reqs), ('noi_dia + hang_nang', reqs_pilot)]:
+        mo_lai = mau['mo_lai_trong_7_ngay'].sum()
+        print(f'Mở lại 7 ngày ({pham_vi}): {mo_lai}/{len(mau)} = {mo_lai / len(mau):.2%}')
+    da_xem_lai = reqs_pilot[reqs_pilot['duoc_xem_lai'] == 1]
+    bo_qua = da_xem_lai['quyet_dinh_xem_lai'].isin(['sua', 'bo']).sum()
+    print(f'Bỏ qua gợi ý (noi_dia + hang_nang): {bo_qua}/{len(da_xem_lai)} = {bo_qua / len(da_xem_lai):.2%}')
+
+
 if __name__ == '__main__':
     runs = pd.read_csv('logix_runs.csv')
     reqs = pd.read_csv('logix_requests.csv', keep_default_na=False)
@@ -121,6 +179,4 @@ if __name__ == '__main__':
         print(f'{gioi_han} lan: tong={kq["tong"]:,.0f} khong_thanh_cong={khong_thanh_cong} '
               f'ca_he_thong={chi_phi_he_thong:,.0f} cps={kq["cps"]:,.0f}')
 
-    # TODO CP4 · Nhiệm vụ D: cỡ mẫu.
-    #   from statsmodels.stats.proportion import proportion_effectsize
-    #   from statsmodels.stats.power import NormalIndPower
+    in_ke_hoach_pilot(reqs)
