@@ -48,9 +48,9 @@ Theo hồ sơ JQKA đã nhận:
 | Tiêu chí | Điểm | Lý do |
 |---|---:|---|
 | C6 · Đề xuất khớp bằng chứng | **10/10** | Có Go có điều kiện, nêu rủi ro xem lại 100% là 11.743–12.414 đ và power 0,64 ở +5 điểm, kèm cách xử lý. |
-| C7 · Số giả lập và phạm vi | **5/10** | Phạm vi thu hẹp bằng số, nhưng 82,83%, 27,12%, 4,25% trong `chi_so.md` chưa được ghi rõ là `simulated`. |
+| C7 · Số giả lập và phạm vi | **10/10** | Phạm vi thu hẹp bằng số (`noi_dia` 0,22×, `hang_nang` 0,69×, loại `quoc_te` 1,88×), và JQKA đã bổ sung nhãn `[dữ liệu chạy thử giả lập, simulated]` cho `82,83%`, `27,12%`, `4,25%` trong `chi_so.md` và `ho_so_launch_v0.md`. |
 | C8 · Pilot ra được quyết định | **10/10** | Có đối chứng đồng thời, ngẫu nhiên, 20 cụm/nhóm, 859 mẫu hiệu dụng/nhóm và 4 luật dừng có ngưỡng/thời hạn/người phụ trách. |
-| **Tổng** | **25/30** | Go có điều kiện. |
+| **Tổng** | **30/30** | Go có điều kiện. |
 
 ## 5. Phiếu để JQKA chấm DMTG
 
@@ -61,12 +61,12 @@ Theo hồ sơ JQKA đã nhận:
 
 | Tiêu chí | Điểm JQKA (0/5/10) | Lý do có số/bằng chứng |
 |---|---:|---|
-| C6 · Đề xuất khớp bằng chứng | ____ | ____ |
-| C7 · Số giả lập và phạm vi | ____ | ____ |
-| C8 · Pilot ra được quyết định | ____ | ____ |
-| **Tổng** | **____ / 30** | |
+| C6 · Đề xuất khớp bằng chứng | **10** | Đề xuất `Go có điều kiện` khớp số (bắt đầu `noi_dia` `0,22×`, mở `hang_nang` `0,69×` khi ≤ `8.000 đ`); nêu rõ rủi ro xem lại 100% (`11.743–12.414 đ/việc`, `giả lập`), power `64,2%` ở `+5 điểm` và cố định tăng lên `2.370 đ/việc` ở nửa khối lượng kèm điều kiện xử lý trước `2026-12-06`. |
+| C7 · Số giả lập và phạm vi | **10** | Mọi số từ `_simulated` và số chạy thử trong `ho_so_launch_v0.md`, `bang_chi_phi.md`, `chi_so.md`, `pilot_plan.yaml` đều gắn nhãn `simulated`/`giả lập`; không có từ cấm; phạm vi thu hẹp bằng số (`noi_dia`, `hang_nang`; loại `quoc_te` `1,88×`, `doi_tac` `0,85×`). |
+| C8 · Pilot ra được quyết định | **10** | Có đối chứng đồng thời, ngẫu nhiên theo nhân viên (`seed: 20261207`, phân tầng `depot`), `20` cụm/nhóm (`859` hiệu dụng/nhóm, `299` YC/NV, `DE = 6,96`, `MDE +6 điểm`); `4` luật dừng đủ 4 vế có ngưỡng/thời hạn/người dừng và rollback `30 phút`. |
+| **Tổng** | **30 / 30** | |
 
-**Quyết định của JQKA:** Go / Go có điều kiện / No-go: ____  
-**Lý do:** ____  
-**Một câu hỏi cho đội trình:** ____  
-**Câu trả lời của DMTG:** ____
+**Quyết định của JQKA:** Go có điều kiện  
+**Lý do:** Hồ sơ đầy đủ bằng chứng, nhãn giả lập nhất quán và thiết kế pilot đủ điều kiện ra quyết định; cần hoàn tất kiểm thử chống hoàn trùng/đối soát sổ cái trước `2026-12-06`, ký chấp nhận power `64,2%` ở `+5 điểm`, và bổ sung `input_validation_failed`, `handoff_to_staff` vào `chi_so.md` để khớp bảng lỗi Ca 9, Ca 4.  
+**Một câu hỏi cho đội trình:** Ngưỡng dừng chi phí đặt `> 8.000 đ` trong 2 tuần cho phạm vi có `hang_nang` (CPS gốc riêng `hang_nang` là `8.221 đ` `simulated`), và `bang_loi.md` dùng `input_validation_failed` (Ca 9), `handoff_to_staff` (Ca 4) nhưng 9 event trong `chi_so.md` chưa có 2 event này — nhóm xử lý thế nào trước `2026-12-06`?  
+**Câu trả lời của DMTG:** *(ghi lại tại buổi hỏi đáp)*
