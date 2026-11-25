@@ -32,4 +32,4 @@
 
 ## 6. Tự đánh giá
 
-Đã hoàn thiện phần tổng hợp CP5 và ghi rõ giới hạn của dữ liệu giả lập, không có đối chứng. Nhóm được phân công chấm là nhóm 26 — Stress; phiếu đã ghi danh tính nhóm nhưng chưa chấm điểm do chưa có repo hoặc hồ sơ để đối chiếu.
+Đã hoàn thiện phần tổng hợp CP5 và ghi rõ giới hạn của dữ liệu giả lập, không có đối chứng. Đã duyệt chéo nhóm JQKA: 25/30 (C6 10, C7 5, C8 10), quyết định Go có điều kiện; câu trả lời của nhóm chưa có trong hồ sơ trao đổi.

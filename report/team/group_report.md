@@ -29,7 +29,7 @@ Các số bên dưới là từ bộ dữ liệu giả lập. Chỉ số chạy 
 | **Rủi ro độ nhạy** | Nếu chi phí làm lại gấp đôi, CPS tăng **51,8% lên 6.787 đ**; nếu xem lại gấp đôi, tăng **40,7% lên 6.292 đ**. Đây là kịch bản độ nhạy, không phải mức đã quan sát xảy ra. | B1 trong [`bang_chi_phi.md`](./bang_chi_phi.md), tái lập bằng [`lab13.py`](../../src/lab13.py). |
 | **Cỡ mẫu pilot** | Chênh lệch +5 điểm cần **1.251 mẫu hiệu dụng/nhóm**, nhưng 20 nhân viên/nhóm với ICC 0,02 có trần dưới 1.000. Vì vậy kế hoạch chấp nhận MDE +6 điểm: **859 mẫu hiệu dụng**, 20 nhân viên × 299 yêu cầu = 5.980 yêu cầu thô/nhóm. Nếu tác động thật chỉ +5 điểm, power khoảng **64,2%** — xác suất phát hiện hiệu ứng ở mức đó theo giả định thiết kế, không phải xác suất pilot thành công. | D1 trong [`pilot_plan.yaml`](./pilot_plan.yaml) và phần D1 khi chạy [`lab13.py`](../../src/lab13.py). |
 
-Đề xuất là **Go có điều kiện** với phạm vi và luật dừng trong [`ho_so_launch_v0.md`](./ho_so_launch_v0.md). Nhóm được phân công chấm là nhóm 26 — Stress; chưa có repo/hồ sơ nên điểm duyệt chéo chưa được ghi.
+Đề xuất của nhóm mình là **Go có điều kiện** với phạm vi và luật dừng trong [`ho_so_launch_v0.md`](./ho_so_launch_v0.md). Duyệt chéo JQKA: **25/30** (C6 10, C7 5, C8 10), quyết định **Go có điều kiện**. Điểm C7 bị trừ vì ba chỉ số chạy thử 82,83%, 27,12%, 4,25% trong `chi_so.md` chưa gắn nhãn `simulated`; C6 và C8 khớp bằng chứng về chi phí/rủi ro và thiết kế pilot. Chi tiết ở [`phieu_cham.md`](./phieu_cham.md); câu trả lời của JQKA chưa có trong hồ sơ trao đổi.
 
 ## 5. Khó khăn và cách xử lý
 
