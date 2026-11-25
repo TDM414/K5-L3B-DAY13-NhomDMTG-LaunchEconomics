@@ -11,7 +11,7 @@
 
 | STT | Họ tên | MSSV | Email | GitHub | Vai trò |
 | --: | ------ | ---- | ----- | ------ | ------- |
-|   1 |        |      |       |        |         |
+|   1 | Trần Duy Mạnh | 2A202603998 | duymanhtran2004mkc2@gmail.com | TDM414 | Người gắn nhãn 1 (CP3) |
 |   2 |        |      |       |        |         |
 |   3 |        |      |       |        |         |
 |   4 |        |      |       |        |         |
@@ -54,3 +54,20 @@ Sao chép mục dưới đây cho từng thành viên.
 - `src/lab13.py` chạy đạt ba phép thử A1: 1,20; 1,25; 1,25.
 - Kết quả A2: tổng chi phí 4.373.585 đ, 978 việc thành công, chi phí mỗi việc thành công 4.472 đ.
 - Kết quả B3: giới hạn 2 lần có chi phí cả hệ thống thấp nhất là 6.901.220 đ.
+
+## Trần Duy Mạnh-2A202603998
+
+### Phần việc phụ trách
+
+- Người gắn nhãn 1 (Checkpoint 3).
+
+### Đóng góp cụ thể
+
+- Tạo nhánh `manh` từ `origin/hg` và kiểm chứng lại `src/lab13.py` chạy đạt A1–A3, B1–B3.
+- Tự gắn nhãn độc lập 20 ca lỗi theo 5 loại Google PAIR trước khi đối chiếu với Nguyễn Xuân Dương.
+- Tổng hợp kết quả đối chiếu (`18 / 20 = 90%`), viết quy tắc phân biệt cho 2 ca lệch (`Ca 6`, `Ca 13`) và bảng khắc phục 5 ca (`Ca 9, 7, 18, 4, 17`) trong `report/team/bang_loi.md`.
+
+### Bằng chứng
+
+- Commit `885c589` trên nhánh `manh` (`report/team/bang_loi.md`).
+- Kết quả đối chiếu 2 bộ nhãn độc lập đạt `18 / 20 = 90%` (vượt ngưỡng `80%`), bảng khắc phục đủ 5 loại lỗi có event/ngưỡng đo được và vai trò phụ trách riêng.
